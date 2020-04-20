@@ -67,7 +67,10 @@
       if (el) {
         currentlyPlayingKeyElements.push(el);
         el.classList.add('playing');
-        document.querySelector(`audio[data-key="${keyCode}"]`).play();
+
+        const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+        audio.currentTime = 0;
+        audio.play();
       }
     });
 
