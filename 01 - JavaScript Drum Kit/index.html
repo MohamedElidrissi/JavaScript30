@@ -60,7 +60,7 @@
 
   <script>
 
-    window.addEventListener('keydown', ({ keyCode }) => {
+    function playSound({ keyCode }) {
       const el = document.querySelector(`.key[data-key="${keyCode}"]`);
 
       if (el) {
@@ -70,7 +70,7 @@
         audio.currentTime = 0;
         audio.play();
       }
-    });
+    }
 
     function removeTransition(e) {
       if (e.propertyName === 'transform') {
@@ -78,6 +78,8 @@
         this.classList.remove('playing');
       }
     }
+
+    window.addEventListener('keydown', playSound);
 
     document.querySelectorAll('.key').forEach(key => {
       key.addEventListener('transitionend', removeTransition);
